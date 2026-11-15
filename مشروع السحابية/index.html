@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بسام علي ثامر القرني | مشروع التخرج في الحوسبة السحابية (التراث الجنوبي)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 950: '#040712', 900: '#0b0f19', 800: '#141c2e', 700: '#1e294b', 600: '#31416f' },
+                        asiri: { crimson: '#dc2626', darkcrimson: '#991b1b', gold: '#f59e0b', darkgold: '#b45309', emerald: '#059669', blue: '#2563eb', teal: '#0d9488' }
+                    },
+                    fontFamily: { sans: ['Inter', 'Tahoma', 'Arial', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #040712; color: #f8fafc; font-family: 'Tahoma', 'Arial', sans-serif; overflow-x: hidden; }
+        .asiri-divider {
+            height: 10px;
+            background: repeating-linear-gradient(135deg, #dc2626, #dc2626 12px, #f59e0b 12px, #f59e0b 24px, #059669 24px, #059669 36px, #2563eb 36px, #2563eb 48px, #141c2e 48px, #141c2e 60px);
+            border-top: 2px solid rgba(245, 158, 11, 0.5); border-bottom: 2px solid rgba(220, 38, 38, 0.5);
+        }
+        .asiri-pattern-border { border: 2px solid transparent; border-image: linear-gradient(to left, #dc2626, #f59e0b, #059669, #2563eb) 1; }
+        .glass-card { background: rgba(20, 28, 46, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(245, 158, 11, 0.25); }
+        .glass-card:hover { border-color: rgba(220, 38, 38, 0.5); box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.25); }
+        .glow-effect { text-shadow: 0 0 25px rgba(245, 158, 11, 0.4); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #040712; }
+        ::-webkit-scrollbar-thumb { background: #31416f; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #dc2626; }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-asiri-crimson selection:text-white">
+
+    <!-- شريط التنقل -->
+    <header class="sticky top-0 z-50 bg-navy-950/95 backdrop-blur-md border-b border-asiri-gold/30 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-asiri-crimson via-asiri-gold to-asiri-emerald flex items-center justify-center border-2 border-asiri-gold/70 shadow-lg group-hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h10a4 4 0 004-4M7 10l5 5 5-5M12 15V3"/></svg>
+                </div>
+                <div>
+                    <span class="block text-sm sm:text-base font-black text-white group-hover:text-asiri-gold transition-colors">بسام علي ثامر القرني</span>
+                    <span class="block text-[11px] text-asiri-gold font-bold">الحوسبة السحابية • التراث الجنوبي</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-1 bg-navy-900/90 px-3 py-2 rounded-2xl border border-asiri-gold/30 shadow-inner">
+                <a href="#hero" class="px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold text-slate-200 hover:text-white hover:bg-asiri-crimson/30 transition-all">1. الرئيسية</a>
+                <a href="#research" class="px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold text-slate-200 hover:text-white hover:bg-asiri-crimson/30 transition-all">2. البحث المعرفي</a>
+                <a href="#multimedia" class="px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold text-slate-200 hover:text-white hover:bg-asiri-crimson/30 transition-all">3. الوسائط والإنفوجرافيك</a>
+                <a href="#architecture" class="px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold text-slate-200 hover:text-white hover:bg-asiri-crimson/30 transition-all">4. القسم الهندسي والتقني</a>
+            </nav>
+            <div class="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-asiri-darkcrimson/80 to-navy-900 border border-asiri-gold/50 shadow-md">
+                <div class="w-3 h-3 rounded-full bg-asiri-gold animate-pulse"></div>
+                <span class="text-xs font-black text-asiri-gold tracking-wider">رؤية السعودية 2030</span>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl bg-navy-900 border border-asiri-gold/30 text-slate-200 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-asiri-gold/40 px-4 py-4 space-y-2">
+            <a href="#hero" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-200 hover:bg-asiri-crimson/30">1. الرئيسية</a>
+            <a href="#research" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-200 hover:bg-asiri-crimson/30">2. البحث المعرفي</a>
+            <a href="#multimedia" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-200 hover:bg-asiri-crimson/30">3. الوسائط والإنفوجرافيك</a>
+            <a href="#architecture" class="block px-4 py-3 rounded-xl text-sm font-bold text-slate-200 hover:bg-asiri-crimson/30">4. القسم الهندسي والتقني</a>
+        </div>
+    </header>
+
+    <div class="asiri-divider"></div>
+
+    <main class="flex-1">
+        <!-- 1. الصفحة الرئيسية المُحسنة (HERO SECTION) -->
+        <section id="hero" class="relative min-h-[92vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950 overflow-hidden">
+            <div class="absolute top-1/4 -right-20 w-96 h-96 bg-asiri-crimson/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-1/4 -left-20 w-96 h-96 bg-asiri-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+                
+                <!-- شارة الكلية البارزة في الأعلى -->
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-navy-800/95 border-2 border-asiri-gold text-asiri-gold text-xs sm:text-sm font-black shadow-2xl">
+                    <svg class="w-4 h-4 text-asiri-crimson" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-1.115 11.96 11.96 0 01.25-1.536zM16 14.222V10.12l1.69-.723a1 1 0 01.25 1.536 1 1 0 01-.89 1.115c-.35.059-.7.121-1.05.174zm-3-1.637v-2.31l1.5-.643v2.953c-.5.06-1 .121-1.5.18z"/></svg>
+                    <span>المؤسسة العامة للتدريب التقني والمهني • كلية الاتصالات والمعلومات بجدة</span>
+                </div>
+
+                <!-- الاسم والمسمى البارز جداً -->
+                <div class="space-y-3">
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight">
+                        بسام علي ثامر القرني
+                    </h1>
+                    <p class="text-lg sm:text-2xl font-extrabold text-asiri-gold glow-effect">
+                        مشروع تخرج منصة الحوسبة السحابية الذكية (AI-Powered Cloud Computing Portfolio)
+                    </p>
+                </div>
+
+                <!-- بطاقة الترحيب والنبذة -->
+                <div class="max-w-3xl mx-auto glass-card p-6 sm:p-8 rounded-3xl asiri-pattern-border shadow-2xl space-y-3">
+                    <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                        مرحباً بكم في محفظتي الرقمية ومشروعي التقني للتخرج في تخصص <strong class="text-asiri-crimson">الحوسبة السحابية وإدارة أنظمة الشبكات</strong>. مستلهمين من عراقة <strong class="text-asiri-gold">التراث الجنوبي الأصيل وفن القط العسيري الهندسي</strong>، يدمج هذا المشروع بين الفهم التقني العميق للحوسبة السحابية وأحدث أدوات الذكاء الاصطناعي التوليدي تماشياً مع <strong class="text-asiri-gold">رؤية المملكة العربية السعودية 2030</strong>.
+                    </p>
+                </div>
+
+                <!-- أزرار التنقل السريع -->
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                    <a href="#research" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-asiri-crimson to-asiri-darkcrimson hover:from-asiri-darkcrimson hover:to-asiri-crimson text-white font-black text-base shadow-xl shadow-asiri-crimson/30 transition-all hover:scale-105 flex items-center gap-2">
+                        <span>2. الانتقال للبحث المعرفي</span>
+                        <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="#multimedia" class="px-8 py-4 rounded-2xl bg-navy-800 hover:bg-navy-700 border-2 border-asiri-gold/60 text-asiri-gold hover:text-white font-black text-base transition-all hover:scale-105 flex items-center gap-2">
+                        <span>3. الوسائط والإنفوجرافيك</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+
+                <!-- الإحصائيات المختصرة -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-4xl mx-auto">
+                    <div class="glass-card p-4 rounded-2xl text-center border border-white/10">
+                        <span class="block text-xl sm:text-2xl font-black text-asiri-crimson">100%</span>
+                        <span class="text-xs text-slate-300 font-bold">امتثال السحابة أولاً</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl text-center border border-white/10">
+                        <span class="block text-xl sm:text-2xl font-black text-asiri-gold">3-Tier</span>
+                        <span class="text-xs text-slate-300 font-bold">بنية سحابية هندسية</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl text-center border border-white/10">
+                        <span class="block text-xl sm:text-2xl font-black text-asiri-emerald">التراث الجنوبي</span>
+                        <span class="text-xs text-slate-300 font-bold">فن القط العسيري</span>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl text-center border border-white/10">
+                        <span class="block text-xl sm:text-2xl font-black text-asiri-gold">رؤية 2030</span>
+                        <span class="text-xs text-slate-300 font-bold">التحول الرقمي الوطني</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="asiri-divider"></div>
+
+        <!-- 2. قسم البحث المعرفي -->
+        <section id="research" class="py-20 px-4 sm:px-6 lg:px-8 bg-navy-950 relative">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <span class="px-4 py-1.5 rounded-full bg-asiri-crimson/10 border border-asiri-crimson/40 text-asiri-crimson text-xs font-black">الجانب العلمي والبحثي المعتمد</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white">2. قسم البحث المعرفي للحوسبة السحابية</h2>
+                    <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">بحث علمي عميق وموثق يغطي محاور الحوسبة السحابية الستة الرئيسية وفق متطلبات الكلية.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- المحور أ -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-crimson transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-crimson/20 border border-asiri-crimson/40 flex items-center justify-center text-asiri-crimson font-black text-lg mb-4">أ</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">التعريف بالمفهوم والأهمية الاستراتيجية</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">دراسة معمارية لخصائص الحوسبة السحابية وفق (NIST)، متضمنة التوافر الذاتي عند الطلب، الوصول الواسع، وتجميع الموارد بكفاءة استراتيجية عالية.</p>
+                        </div>
+                        <button onclick="openResearchModal('أ', 'التعريف بالحوسبة السحابية ومفهومها وأهميتها الاستراتيجية', 'الحوسبة السحابية هي نموذج يتيح للجهات والأفراد الوصول لشبكة مريحة وعبر الطلب لموارد الحوسبة دون الحاجة لإدارة بنية تحتية محلية مكلفة.')" class="self-start text-xs font-bold text-asiri-crimson hover:underline flex items-center gap-1">قراءة التفاصيل</button>
+                    </div>
+                    <!-- المحور ب -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-gold transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-gold/20 border border-asiri-gold/40 flex items-center justify-center text-asiri-gold font-black text-lg mb-4">ب</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">أنواع ونماذج النشر (Cloud Types)</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تحليل شامل لأنماط السحابة: العامة، الخاصة، الهجينة، والمتعددة لضمان أمان البيانات ومرونتها.</p>
+                        </div>
+                        <button onclick="openResearchModal('ب', 'أنواع السحابة (العامة، الخاصة، الهجينة، والمتعددة)', 'تتنوع سحب النشر لتلبية المتطلبات الأمنية والتشغيلية للقطاعات المختلفة في المملكة.')" class="self-start text-xs font-bold text-asiri-gold hover:underline flex items-center gap-1">قراءة التفاصيل</button>
+                    </div>
+                    <!-- المحور ج -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-emerald transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-emerald/20 border border-asiri-emerald/40 flex items-center justify-center text-asiri-emerald font-black text-lg mb-4">ج</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">نماذج الخدمات السحابية الأساسية</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تفصيل هرم الخدمات الثلاث: البنية التحتية كخدمة (IaaS)، المنصة كخدمة (PaaS)، والبرمجيات كخدمة (SaaS).</p>
+                        </div>
+                        <button onclick="openResearchModal('ج', 'خدمات الحوسبة السحابية الأساسية وتصنيفاتها', 'تتدرج الخدمات من IaaS للتحكم بالبنية، مروراً بـ PaaS للتطوير البرمجي، وصولاً إلى SaaS للاستخدام النهائي.')" class="self-start text-xs font-bold text-asiri-emerald hover:underline flex items-center gap-1">قراءة التفاصيل</button>
+                    </div>
+                    <!-- المحور د -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-blue transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-blue/20 border border-asiri-blue/40 flex items-center justify-center text-asiri-blue font-black text-lg mb-4">د</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">مقارنة شاملة بين مزودي الخدمة الكبار</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تقييم مقارن لأبرز المزودين عالمياً ووطنياً (AWS, Azure, GCP, STC Cloud) مع الالتزام بضوابط NCA.</p>
+                        </div>
+                        <button onclick="openComparisonModal()" class="self-start text-xs font-bold text-asiri-blue hover:underline flex items-center gap-1">فتح جدول المقارنة</button>
+                    </div>
+                    <!-- المحور هـ -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-gold transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-gold/20 border border-asiri-gold/40 flex items-center justify-center text-asiri-gold font-black text-lg mb-4">هـ</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">التطور التاريخي والمستقبلي للحوسبة</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">استعراض الجذور بدءاً من الحوسبة المركزية وصولاً إلى السحب الحديثة وتقنيات الذكاء الاصطناعي التوليدي.</p>
+                        </div>
+                        <button onclick="openResearchModal('هـ', 'التطور التاريخي والمستقبلي للحوسبة السحابية', 'مرت الحوسبة بمراحل تحول جذرية حتى تطورت نحو الحوسبة الحافة والذكاء الاصطناعي التوليدي لتعزيز الابتكار.')" class="self-start text-xs font-bold text-asiri-gold hover:underline flex items-center gap-1">قراءة التفاصيل</button>
+                    </div>
+                    <!-- المحور و -->
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-asiri-crimson transition-all">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-asiri-crimson/20 border border-asiri-crimson/40 flex items-center justify-center text-asiri-crimson font-black text-lg mb-4">و</div>
+                            <h3 class="text-lg font-extrabold text-white mb-2">الفرص الوظيفية وسوق العمل السعودي</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">رصد الوظائف والشهادات الاحترافية المطلوبة في المملكة تماشياً مع رؤية السعودية 2030.</p>
+                        </div>
+                        <button onclick="openResearchModal('و', 'الفرص الوظيفية والمهارات المطلوبة', 'تسعى رؤية 2030 لتوطين التقنية وتأهيل الكوادر الوطنية في مجالات السحابة والأمن السيبراني.')" class="self-start text-xs font-bold text-asiri-crimson hover:underline flex items-center gap-1">قراءة التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="asiri-divider"></div>
+
+        <!-- 3. قسم الوسائط والإنفوجرافيك -->
+        <section id="multimedia" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-navy-950 via-navy-900 to-navy-950">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center space-y-3">
+                    <span class="px-4 py-1.5 rounded-full bg-asiri-gold/10 border border-asiri-gold/40 text-asiri-gold text-xs font-black">مركز الوسائط والعروض المرئية</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white">3. الوسائط المتعددة والإنفوجرافيك التقني</h2>
+                    <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">الفيديو التعريفي للمتدرب، البودكاست التقني الصوتي، والإنفوجرافيك الشامل للمشروع.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- مشغل الفيديو -->
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl asiri-pattern-border shadow-2xl space-y-6 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-asiri-crimson/20 border border-asiri-crimson/50 text-asiri-crimson text-xs font-extrabold">أولاً: الفيديو التعريفي</span>
+                                <span class="text-xs text-asiri-gold font-bold">جاهز للتشغيل</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-black text-white">الملخص التنفيذي للمتدرب بسام القرني</h3>
+                        </div>
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-asiri-gold/60 shadow-2xl bg-black">
+                            <video id="project-video" controls class="w-full h-full object-cover">
+                                <source src="ScreenRecording_١١-١٤-٢٠٢٦ ٢٠-٤٠-٥٥_1 (2).mov" type="video/mp4">
+                                متصفحك لا يدعم تشغيل الفيديو.
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- مشغل البودكاست -->
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl asiri-pattern-border shadow-2xl space-y-6 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-asiri-emerald/20 border border-asiri-emerald/50 text-asiri-emerald text-xs font-extrabold">ثانياً: البودكاست التقني</span>
+                                <span class="text-xs text-asiri-gold font-bold">ملف M4A</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-black text-white">حلقة نقاشية: الحوسبة السحابية في السعودية</h3>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-navy-950 border-2 border-asiri-emerald/40 space-y-5 shadow-inner">
+                            <div class="flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-14 h-14 rounded-2xl bg-asiri-emerald/20 border border-asiri-emerald flex items-center justify-center text-asiri-emerald shrink-0 shadow">
+                                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-black text-white">تطور_الحوسبة_والذكاء_الاصطناعي_في_السعودية.m4a[cite: 5]</h4>
+                                        <p class="text-xs text-slate-400">انقر للتشغيل والاستماع للحلقة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <audio id="podcast-audio" controls class="w-full rounded-xl">
+                                <source src="تطور_الحوسبة_والذكاء_الاصطناعي_في_السعودية.m4a" type="audio/mp4">
+                                متصفحك لا يدعم مشغل الصوت.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الإنفوجرافيك -->
+                <div class="glass-card p-6 sm:p-10 rounded-3xl border-2 border-asiri-gold/50 shadow-2xl space-y-6">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-6 flex-wrap gap-4">
+                        <div>
+                            <span class="px-3 py-1 rounded-lg bg-asiri-gold/20 border border-asiri-gold/50 text-asiri-gold text-xs font-extrabold">ثالثاً: لوحة الإنفوجرافيك</span>
+                            <h3 class="text-xl sm:text-2xl font-black text-white mt-2">خدمة الحوسبة السحابية والهوية الرقمية للجنوب</h3>
+                        </div>
+                        <button onclick="openInfographicModal()" class="py-3 px-5 rounded-2xl bg-asiri-blue hover:bg-blue-700 text-white font-black text-xs sm:text-sm shadow-lg transition-all flex items-center gap-2">تكبير الصورة 🔍</button>
+                    </div>
+                    <div onclick="openInfographicModal()" class="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-asiri-gold/70 bg-navy-950 shadow-2xl">
+                        <img id="infographic-preview-img" src="Gemini_Generated_Image_v16xivv16xivv16x.jpg" alt="إنفوجرافيك الحوسبة السحابية" class="w-full h-auto max-h-[620px] object-contain mx-auto transition-transform duration-500 group-hover:scale-[1.015]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="asiri-divider"></div>
+
+        <!-- 4. القسم الهندسي والتقني -->
+        <section id="architecture" class="py-20 px-4 sm:px-6 lg:px-8 bg-navy-950 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center space-y-3">
+                    <span class="px-4 py-1.5 rounded-full bg-asiri-gold/10 border border-asiri-gold/40 text-asiri-gold text-xs font-black">الهندسة المعمارية والمساعد الذكي</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white">4. القسم الهندسي والتقني والمساعد الذكي</h2>
+                    <p class="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">مخطط بنية سحابية ثلاثية الطبقات وشات بوت ذكي للإجابة الفورية.</p>
+                </div>
+
+                <!-- شات البوت -->
+                <div class="glass-card rounded-3xl border-2 border-asiri-gold/40 shadow-2xl overflow-hidden flex flex-col h-[600px]">
+                    <div class="p-5 bg-gradient-to-l from-navy-800 to-asiri-darkcrimson border-b border-asiri-gold/30 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-asiri-crimson/20 border border-asiri-crimson text-asiri-crimson flex items-center justify-center font-bold">AI</div>
+                            <div>
+                                <h3 class="text-base font-extrabold text-white">المساعد الذكي التفاعلي (Gemini AI Advisor)</h3>
+                                <p class="text-xs text-asiri-gold">جاهز للإجابة على استفسارات لجنة المناقشة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chat-messages" class="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 bg-navy-950/70 text-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-asiri-crimson to-asiri-gold text-white flex items-center justify-center text-xs font-bold shrink-0 mt-1">AI</div>
+                            <div class="bg-navy-800 border border-asiri-gold/30 rounded-2xl rounded-tr-none p-4 text-slate-200 leading-relaxed shadow max-w-[90%]">
+                                حياك الله في موقع مشروع التخرج للمتدرب <strong class="text-asiri-gold">بسام علي ثامر القرني</strong> (كلية الاتصالات والمعلومات بجدة)! تفضل بطرح أي سؤال حول البنية السحابية أو رؤية 2030. 🏔️☁️
+                            </div>
+                        </div>
+                    </div>
+                    <form id="chat-form" class="p-3 bg-navy-900 border-t border-asiri-gold/30 flex items-center gap-2">
+                        <input type="text" id="chat-input" placeholder="اكتب سؤالك هنا..." autocomplete="off" class="flex-1 bg-navy-950 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-asiri-gold">
+                        <button type="submit" class="px-6 py-3 rounded-xl bg-asiri-crimson hover:bg-asiri-darkcrimson text-white font-bold text-sm">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="bg-navy-950 border-t border-asiri-gold/40 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-right">
+            <div>
+                <span class="text-base font-black text-white block">بسام علي ثامر القرني</span>
+                <p class="text-xs text-slate-400 mt-1">متدرب في الحوسبة السحابية • كلية الاتصالات والمعلومات بجدة</p>
+            </div>
+            <div class="text-center">
+                <span class="inline-block px-4 py-3 rounded-2xl bg-navy-900 border border-asiri-gold text-asiri-gold text-xs sm:text-sm font-bold shadow-lg">
+                    🇸🇦 صُمن بهوية التراث الجنوبي العريق وفن القط العسيري تزامناً مع رؤية السعودية 2030
+                </span>
+            </div>
+            <div class="text-center md:text-left text-xs text-slate-400">
+                <p>© 2026 جميع الحقوق محفوظة للمتدرب بسام القرني.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نافذة تكبير الإنفوجرافيك -->
+    <div id="infographic-modal" class="fixed inset-0 z-50 hidden bg-navy-950/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card max-w-5xl w-full p-6 rounded-3xl border-2 border-asiri-gold/60 shadow-2xl space-y-4 relative max-h-[95vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                <h3 class="text-lg font-black text-white">معاينة الإنفوجرافيك التقني</h3>
+                <button onclick="closeInfographicModal()" class="px-4 py-2 rounded-xl bg-asiri-crimson text-white font-bold text-xs">إغلاق ✕</button>
+            </div>
+            <div class="flex-1 overflow-auto flex items-center justify-center">
+                <img src="Gemini_Generated_Image_v16xivv16xivv16x.jpg" class="max-w-full h-auto rounded-xl">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        const infographicModal = document.getElementById('infographic-modal');
+        function openInfographicModal() { infographicModal.classList.remove('hidden'); }
+        function closeInfographicModal() { infographicModal.classList.add('hidden'); }
+
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = chatInput.value.trim();
+            if(!val) return;
+            chatInput.value = '';
+            
+            const uDiv = document.createElement('div');
+            uDiv.className = 'flex justify-end';
+            uDiv.innerHTML = `<div class="bg-asiri-crimson text-white rounded-2xl p-3 max-w-[80%] text-sm">${val}</div>`;
+            chatMessages.appendChild(uDiv);
+
+            setTimeout(() => {
+                const bDiv = document.createElement('div');
+                bDiv.className = 'flex items-start gap-3';
+                bDiv.innerHTML = `<div class="w-8 h-8 rounded-xl bg-asiri-gold text-navy-950 flex items-center justify-center font-bold text-xs shrink-0">AI</div><div class="bg-navy-800 border border-asiri-gold/30 rounded-2xl p-3 text-sm text-slate-200 max-w-[80%]">أهلاً بك! مشروع المتدرب بسام القرني يغطي الحوسبة السحابية والبنية ثلاثية الطبقات بكفاءة عالية وفق رؤية 2030.</div>`;
+                chatMessages.appendChild(bDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+        });
+    </script>
+</body>
+</html>
